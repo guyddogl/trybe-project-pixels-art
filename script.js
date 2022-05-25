@@ -1,7 +1,7 @@
 window.onload = localStorage.setItem('selectedColor', 'black'); // Requisito 6 // localStorage.clear();
 
 // Requisito 7
-function styleElements() {
+function styleElements(event) {
   const clickedDiv = document.getElementById(event.target.id);
   clickedDiv.classList.add('selected');
   clickedDiv.style.cursor = 'grabbing';
@@ -15,26 +15,26 @@ function styleElements() {
   localStorage.setItem('selectedColor', color);
 }
 
-function selectColor() {
+function selectColor(event) {
   const elementDivColor = document.getElementsByClassName('color');
   for (let index = 0; index < elementDivColor.length; index += 1) {
     elementDivColor[index].classList.remove('selected');
     elementDivColor[index].style.cursor = 'grab';
   }
-  styleElements();
+  styleElements(event);
   // console.log('selectColor() => Selecionou a cor: ', color);
 }
 
 function clickPallete() {
   const elementDivColor = document.getElementsByClassName('color');
   for (let index = 0; index < elementDivColor.length; index += 1) {
-    elementDivColor[index].addEventListener('click', selectColor)
+    elementDivColor[index].addEventListener('click', selectColor);
   }
 }
 clickPallete();
 
 // Requisito 8
-function setPixelColor() {
+function setPixelColor(event) {
   const selectedColor = localStorage.getItem('selectedColor');
   event.target.style.backgroundColor = selectedColor;
   // console.log('Aplicou a cor: ', selectedColor);
