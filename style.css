@@ -59,23 +59,7 @@
   width: 50px;
   border: 1px solid black;
   display: inline-block;
-  cursor: grab;
-}
-
-#Black {
-  background-color: black;
-}
-
-#Red {
-  background-color: red;
-}
-
-#Green {
-  background-color: green;
-}
-
-#Blue {
-  background-color: blue;
+  cursor: pointer;
 }
 
 .pixel {
