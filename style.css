@@ -25,8 +25,8 @@
   padding: 10px 30px;
   border-radius: 4px;
   font-size: 16px;
-  font-weight: bold;
-  background-color: #FFCA2C;
+  font-weight: 900;
+  background-color: #ffca2c;
   box-shadow: 2px 2px 1px #ccc;
   transition: 0.5s ease;
 }
@@ -36,14 +36,14 @@
   padding: 10px 30px;
   border-radius: 4px;
   font-size: 16px;
-  font-weight: bold;
-  background-color: #31D2F2;
+  font-weight: 900;
+  background-color: #31d2f2;
   box-shadow: 2px 2px 1px #ccc;
   transition: 0.5s ease;
 }
 
-input#board-size {
-  border: 1px solid #31D2F2;
+#board-size {
+  border: 1px solid #31d2f2;
   border-radius: 4px;
   padding: 10px 10px;
   width: 160px;
@@ -52,7 +52,6 @@ input#board-size {
 #clear-board:hover, #generate-board:hover {
   box-shadow: 3px 3px 4px #ccc;
   cursor: pointer;
-  border-radius: 0px;
 }
 
 .color {
