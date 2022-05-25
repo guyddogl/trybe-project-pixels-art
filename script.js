@@ -80,9 +80,10 @@ function createBoard(size) {
     sectionPixelBoard.removeChild(sectionPixelBoard.firstChild);
   }
   // Requisito 11
-  if(size < 5) size = 5;
-  if(size > 50) size = 50;
-  const boardSize = size * size;
+  let minMaxSize = size;
+  if (size < 5) minMaxSize = 5;
+  if (size > 50) minMaxSize = 50;
+  const boardSize = minMaxSize * minMaxSize;
   for (let index = 0; index < boardSize; index += 1) {
     const divPixel = document.createElement('div');
     divPixel.classList.add('pixel');
