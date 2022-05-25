@@ -31,6 +31,30 @@
   transition: 0.5s ease;
 }
 
+#generate-board {
+  margin-bottom: 10px;
+  padding: 10px 30px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #31D2F2;
+  box-shadow: 2px 2px 1px #ccc;
+  transition: 0.5s ease;
+}
+
+input#board-size {
+  border: 1px solid #31D2F2;
+  border-radius: 4px;
+  padding: 10px 10px;
+  width: 160px;
+}
+
+#clear-board:hover, #generate-board:hover {
+  box-shadow: 3px 3px 4px #ccc;
+  cursor: pointer;
+  border-radius: 0px;
+}
+
 .color {
   height: 50px;
   width: 50px;
