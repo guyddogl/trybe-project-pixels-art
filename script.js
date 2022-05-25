@@ -25,18 +25,19 @@ function selectColor(event) {
   // console.log('selectColor() => Selecionou a cor: ', color);
 }
 
-function clickPallete() {
+function clickPalette() {
   const elementDivColor = document.getElementsByClassName('color');
   for (let index = 0; index < elementDivColor.length; index += 1) {
     elementDivColor[index].addEventListener('click', selectColor);
   }
 }
-clickPallete();
+clickPalette();
 
 // Requisito 8
 function setPixelColor(event) {
   const selectedColor = localStorage.getItem('selectedColor');
-  event.target.style.backgroundColor = selectedColor;
+  const pixelSquare = event;
+  pixelSquare.target.style.backgroundColor = selectedColor;
   // console.log('Aplicou a cor: ', selectedColor);
 }
 
@@ -47,3 +48,17 @@ function clickPixel() {
   }
 }
 clickPixel();
+
+// Requisito 9
+function clearPixelBoard() {
+  const elementPixel = document.getElementsByClassName('pixel');
+  for (let index = 0; index < elementPixel.length; index += 1) {
+    elementPixel[index].style.backgroundColor = 'white';
+  }
+}
+
+function clickClearButton() {
+  const clearButton = document.getElementById('clear-board');
+  clearButton.addEventListener('click', clearPixelBoard);
+}
+clickClearButton();
