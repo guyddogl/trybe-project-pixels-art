@@ -1,5 +1,29 @@
 window.onload = localStorage.setItem('selectedColor', 'black'); // Requisito 6 // localStorage.clear();
 
+// Requisitos 2 e 12
+const listOfColors = ['Gray', 'SlateBlue', 'Blue', 'DeepSkyBlue', 'SteelBlue', 'Aquamarine',
+  'Green', 'Lime', 'Chocolate', 'SaddleBrown', 'DarkMagenta', 'Indigo', 'Magenta', 'Pink',
+  'Red', 'Yellow', 'Gold', 'Thistle', 'PowderBlue'];
+function createColorPalette() {
+  const sectionColorPalette = document.getElementById('color-palette');
+  for (let index = 0; index < 4; index += 1) {
+    const randomColor = Math.floor(Math.random() * listOfColors.length);
+    const divPalette = document.createElement('div');
+    if (index === 0) {
+      divPalette.classList.add('color', 'selected');
+      divPalette.setAttribute('id', 'Black');
+      divPalette.style.backgroundColor = 'Black';
+      sectionColorPalette.appendChild(divPalette);
+    } else {
+      divPalette.classList.add('color');
+      divPalette.setAttribute('id', listOfColors[randomColor]);
+      divPalette.style.backgroundColor = listOfColors[randomColor];
+      sectionColorPalette.appendChild(divPalette);
+    }
+  }
+}
+createColorPalette();
+
 // Requisito 7
 function styleElements(event) {
   const clickedDiv = document.getElementById(event.target.id);
@@ -49,6 +73,27 @@ function clickPixel() {
 }
 clickPixel();
 
+// Requisitos 4 e 5
+function createBoard(size) {
+  const sectionPixelBoard = document.getElementById('pixel-board');
+  while (sectionPixelBoard.firstChild) {
+    sectionPixelBoard.removeChild(sectionPixelBoard.firstChild);
+  }
+  // Requisito 11
+  if(size < 5) size = 5;
+  if(size > 50) size = 50;
+  const boardSize = size * size;
+  for (let index = 0; index < boardSize; index += 1) {
+    const divPixel = document.createElement('div');
+    divPixel.classList.add('pixel');
+    sectionPixelBoard.appendChild(divPixel);
+    divPixel.addEventListener('click', setPixelColor); // A função setPixelColor está abaixo, como pode ser chamada antes?
+  }
+  sectionPixelBoard.style.width = `${(size * 40)}px`;
+}
+const defaultBoard = 5;
+createBoard(defaultBoard);
+
 // Requisito 9
 function clearPixelBoard() {
   const elementPixel = document.getElementsByClassName('pixel');
@@ -62,3 +107,22 @@ function clickClearButton() {
   clearButton.addEventListener('click', clearPixelBoard);
 }
 clickClearButton();
+
+// Bônus
+// Requisito 10
+function generateBoard() {
+  const inputBoard = document.getElementById('board-size');
+  if (inputBoard.value === '' || inputBoard.value === null) {
+    alert('Board inválido!');
+  // } else if (inputBoard.value < 5 || inputBoard.value > 50) {
+  //   alert('Só é permitido valores entre 5 e 50!');
+  } else {
+    createBoard(inputBoard.value);
+  }
+}
+
+function clickGenerateButton() {
+  const generateButton = document.getElementById('generate-board');
+  generateButton.addEventListener('click', generateBoard);
+}
+clickGenerateButton();
