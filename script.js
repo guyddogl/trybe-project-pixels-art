@@ -1,3 +1,8 @@
+window.onload = function () {
+  localStorage.setItem('selectedColor', 'black'); // Requisito 6
+  // localStorage.clear();
+};
+
 // Requisito 7
 function clickPallete() {
   let elementDivColor = document.getElementsByClassName('color');
@@ -29,4 +34,19 @@ function selectColor() {
   }
   styleElements();
   // console.log('selectColor() => Selecionou a cor: ', color);
+}
+
+// Requisito 8
+function clickPixel() {
+  let elementPixel = document.getElementsByClassName('pixel');
+  for (let index = 0; index < elementPixel.length; index += 1) {
+    elementPixel[index].addEventListener('click', setPixelColor);
+  }
+}
+clickPixel();
+
+function setPixelColor() {
+  let selectedColor = localStorage.getItem('selectedColor');
+  event.target.style.backgroundColor = selectedColor;
+  // console.log('Aplicou a cor: ', selectedColor);
 }
