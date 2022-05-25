@@ -5,6 +5,21 @@
   border: 0;
 }
 
+#title, #color-palette {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+#pixel-board {
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: start;
+  width: 200px;
+}
+
 .color {
   height: 50px;
   width: 50px;
@@ -27,4 +42,12 @@
 
 #Blue {
   background-color: blue;
+}
+
+.pixel {
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  border: 1px solid black;
+  cursor: grabbing;
 }
