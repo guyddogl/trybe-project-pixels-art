@@ -5,7 +5,7 @@
   border: 0;
 }
 
-#title,#color-palette,#buttons {
+#title , #color-palette , #buttons {
   margin-top: 10px;
   margin-left: 20px;
 }
@@ -45,11 +45,11 @@
 #board-size {
   border: 1px solid #31d2f2;
   border-radius: 4px;
-  padding: 10px 10px;
+  padding: 10px;
   width: 160px;
 }
 
-#clear-board:hover, #generate-board:hover {
+#clear-board:hover , #generate-board:hover {
   box-shadow: 3px 3px 4px #ccc;
   cursor: pointer;
 }
