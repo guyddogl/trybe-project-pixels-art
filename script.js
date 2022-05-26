@@ -1,10 +1,7 @@
-window.onload = localStorage.setItem('selectedColor', 'black'); // Requisito 6 // localStorage.clear();
+window.onload = localStorage.setItem('selectedColor', 'black'); // Requisito 6
 
 // Requisitos 2 e 12
-const listOfColors = ['Gray', 'SlateBlue', 'Blue', 'DeepSkyBlue', 'SteelBlue', 'Aquamarine',
-  'Green', 'Lime', 'Chocolate', 'SaddleBrown', 'DarkMagenta', 'Indigo', 'Magenta', 'Pink',
-  'Red', 'Yellow', 'Gold', 'Thistle', 'PowderBlue'];
-function createColorPalette() {
+function createColorPalette(listOfColors) {
   const sectionColorPalette = document.getElementById('color-palette');
   for (let index = 0; index < 4; index += 1) {
     const randomColor = Math.floor(Math.random() * listOfColors.length);
@@ -13,16 +10,19 @@ function createColorPalette() {
       divPalette.classList.add('color', 'selected');
       divPalette.setAttribute('id', 'Black');
       divPalette.style.backgroundColor = 'Black';
-      sectionColorPalette.appendChild(divPalette);
     } else {
       divPalette.classList.add('color');
       divPalette.setAttribute('id', listOfColors[randomColor]);
       divPalette.style.backgroundColor = listOfColors[randomColor];
-      sectionColorPalette.appendChild(divPalette);
     }
+    sectionColorPalette.appendChild(divPalette);
+    listOfColors.splice(randomColor, 1);
   }
 }
-createColorPalette();
+const listOfColors = ['Gray', 'SlateBlue', 'Blue', 'DeepSkyBlue', 'SteelBlue', 'Aquamarine',
+  'Green', 'Lime', 'Chocolate', 'SaddleBrown', 'DarkMagenta', 'Indigo', 'Magenta', 'Pink',
+  'Red', 'Yellow', 'Gold', 'Thistle', 'PowderBlue'];
+createColorPalette(listOfColors);
 
 // Requisito 7
 function styleElements(event) {
@@ -43,7 +43,7 @@ function selectColor(event) {
   const elementDivColor = document.getElementsByClassName('color');
   for (let index = 0; index < elementDivColor.length; index += 1) {
     elementDivColor[index].classList.remove('selected');
-    elementDivColor[index].style.cursor = 'grab';
+    elementDivColor[index].style.cursor = 'pointer';
   }
   styleElements(event);
   // console.log('selectColor() => Selecionou a cor: ', color);
@@ -76,9 +76,10 @@ clickPixel();
 // Requisitos 4 e 5
 function createBoard(size) {
   const sectionPixelBoard = document.getElementById('pixel-board');
-  while (sectionPixelBoard.firstChild) {
-    sectionPixelBoard.removeChild(sectionPixelBoard.firstChild);
-  }
+  sectionPixelBoard.innerHTML = '';
+  // while (sectionPixelBoard.firstChild) {
+  //   sectionPixelBoard.removeChild(sectionPixelBoard.firstChild);
+  // }
   // Requisito 11
   let minMaxSize = size;
   if (size < 5) minMaxSize = 5;
@@ -90,7 +91,7 @@ function createBoard(size) {
     sectionPixelBoard.appendChild(divPixel);
     divPixel.addEventListener('click', setPixelColor); // A função setPixelColor está abaixo, como pode ser chamada antes?
   }
-  sectionPixelBoard.style.width = `${(size * 40)}px`;
+  sectionPixelBoard.style.width = `${(minMaxSize * 40)}px`;
 }
 const defaultBoard = 5;
 createBoard(defaultBoard);
